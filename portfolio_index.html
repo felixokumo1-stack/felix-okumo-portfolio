@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Felix Okumo — Energy Systems Engineer. MSc Ruhr University Bochum. Building data-driven tools for the energy transition.">
+<title>Felix Okumo — Energy Systems Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F5F2EC;
+  --surf:    #FFFFFF;
+  --surf2:   #F0EDE6;
+  --bord:    #E0DBD2;
+  --ink:     #1A1F2E;
+  --ink2:    #44526A;
+  --ink3:    #8494A8;
+  --acc:     #1B4FD8;
+  --acc2:    #2563EB;
+  --acc-bg:  #EEF2FF;
+  --grn:     #15803D;
+  --grn-bg:  #F0FDF4;
+  --amb:     #D97706;
+  --amb-bg:  #FFFBEB;
+  --hero:    #141C2E;
+  --hero-t:  #E8EDF5;
+  --hero-t2: #8FA8BF;
+  --serif:   'DM Serif Display', serif;
+  --sans:    'DM Sans', sans-serif;
+  --mono:    'JetBrains Mono', monospace;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; background:var(--bg); }
+body { font-family:var(--sans); color:var(--ink); line-height:1.65; font-size:15px; background:var(--bg); }
+::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--bord);}
+img { display:block; max-width:100%; }
+a { color:inherit; }
+
+/* ── LAYOUT ───────────────────────────────────────────── */
+.container { max-width:1040px; margin:0 auto; padding:0 48px; }
+section { padding:72px 0; }
+.divider { height:1px; background:var(--bord); }
+.sec-label { font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--acc2); margin-bottom:6px; }
+.sec-title { font-family:var(--serif); font-size:clamp(22px,2.8vw,32px); color:var(--ink); margin-bottom:20px; line-height:1.2; }
+
+/* ── NAV ──────────────────────────────────────────────── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(20,28,46,.97); backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  height:52px; display:flex; align-items:center; justify-content:space-between; padding:0 48px;
+}
+.nav-name { font-family:var(--serif); font-size:16px; color:#fff; text-decoration:none; }
+.nav-links { display:flex; gap:26px; align-items:center; }
+.nav-links a { font-family:var(--mono); font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,.42); text-decoration:none; transition:color .18s; }
+.nav-links a:hover { color:#fff; }
+.nav-cta { font-family:var(--mono); font-size:10px; letter-spacing:.05em; background:var(--acc); color:#fff !important; padding:5px 14px; text-decoration:none; transition:background .18s; }
+.nav-cta:hover { background:var(--acc2) !important; }
+
+/* ── HERO ─────────────────────────────────────────────── */
+#hero {
+  background:var(--hero); padding:96px 0 80px;
+  position:relative; overflow:hidden;
+}
+#hero::before {
+  content:''; position:absolute; top:-200px; right:-200px;
+  width:560px; height:560px;
+  background:radial-gradient(circle,rgba(27,79,216,.09) 0%,transparent 68%);
+  pointer-events:none;
+}
+#hero::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--acc) 0%,#60A5FA 50%,var(--grn) 100%);
+}
+.hero-grid { display:grid; grid-template-columns:1fr 220px; gap:52px; align-items:center; }
+
+/* Left */
+.hero-eyebrow { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7BAFD4; margin-bottom:12px; }
+.hero-name { font-family:var(--serif); font-size:clamp(34px,5vw,58px); line-height:1.06; color:#fff; margin-bottom:6px; }
+.hero-name em { font-style:italic; color:#60A5FA; }
+.hero-role { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--hero-t2); margin-bottom:22px; }
+.hero-tagline { font-size:16.5px; color:rgba(255,255,255,.70); max-width:500px; line-height:1.75; margin-bottom:28px; font-weight:300; }
+.hero-tagline strong { color:rgba(255,255,255,.90); font-weight:400; }
+
+/* Buttons */
+.hero-ctas { display:flex; gap:9px; flex-wrap:wrap; margin-bottom:32px; }
+.btn { font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; padding:9px 18px; transition:all .18s; display:inline-flex; align-items:center; gap:6px; }
+.btn-solid { background:var(--acc); color:#fff; }
+.btn-solid:hover { background:var(--acc2); }
+.btn-ghost { border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.65); }
+.btn-ghost:hover { border-color:rgba(255,255,255,.45); color:#fff; }
+
+.focus-tags { display:flex; gap:6px; flex-wrap:wrap; }
+.ftag { font-family:var(--mono); font-size:9px; letter-spacing:.05em; color:rgba(255,255,255,.32); border:1px solid rgba(255,255,255,.09); padding:3px 9px; }
+
+/* Headshot — right side */
+.headshot-col { display:flex; flex-direction:column; align-items:center; gap:14px; }
+
+/*
+  HEADSHOT INSTRUCTIONS
+  ─────────────────────
+  To add your photo:
+  1. Save your photo as:  assets/headshot.jpg
+     (create an assets/ folder in the same repo)
+  2. Delete the <div class="hs-placeholder"> block below
+  3. Uncomment the <img> line
+*/
+.hs-ring {
+  width:188px; height:188px; border-radius:50%;
+  border:2px solid rgba(255,255,255,.12);
+  overflow:hidden; background:rgba(255,255,255,.04);
+  position:relative;
+}
+/* .hs-ring img { width:100%; height:100%; object-fit:cover; object-position:center top; } */
+.hs-placeholder {
+  width:100%; height:100%; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:8px;
+}
+.hs-placeholder svg { opacity:.22; }
+.hs-placeholder span { font-family:var(--mono); font-size:7.5px; color:rgba(255,255,255,.22); text-align:center; letter-spacing:.05em; line-height:1.6; }
+.hs-location { font-family:var(--mono); font-size:9px; letter-spacing:.05em; color:rgba(255,255,255,.28); text-align:center; line-height:1.65; }
+
+/* ── ABOUT ────────────────────────────────────────────── */
+#about { background:var(--surf); }
+.about-grid { display:grid; grid-template-columns:1.45fr 1fr; gap:52px; align-items:start; }
+.body-text { font-size:14.5px; color:var(--ink2); line-height:1.78; margin-bottom:16px; }
+.body-text:last-child { margin-bottom:0; }
+.body-text strong { color:var(--ink); font-weight:500; }
+
+/* Skills */
+.skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.sk-card { background:var(--surf2); border:1px solid var(--bord); border-left:2px solid var(--acc); padding:12px 14px; }
+.sk-cat { font-family:var(--mono); font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:var(--acc2); margin-bottom:7px; }
+.sk-list { font-size:11.5px; color:var(--ink2); line-height:1.75; }
+.sk-card.full { grid-column:span 2; }
+.sk-inline { display:flex; flex-wrap:wrap; gap:3px 14px; font-size:11.5px; color:var(--ink2); }
+
+/* ── EXPERIENCE ───────────────────────────────────────── */
+#experience { background:var(--bg); }
+.exp-list { margin-top:4px; }
+.exp-item { display:grid; grid-template-columns:130px 1fr; gap:24px; padding:24px 0; border-bottom:1px solid var(--bord); }
+.exp-item:last-child { border-bottom:none; }
+.exp-period { font-family:var(--mono); font-size:9.5px; letter-spacing:.04em; color:var(--ink3); padding-top:3px; line-height:1.65; }
+.exp-role { font-size:15px; color:var(--ink); font-weight:500; margin-bottom:2px; }
+.exp-co { font-family:var(--mono); font-size:10px; letter-spacing:.04em; color:var(--acc2); margin-bottom:10px; }
+.exp-desc { font-size:13px; color:var(--ink2); line-height:1.7; }
+.exp-tags { display:flex; gap:5px; flex-wrap:wrap; margin-top:10px; }
+.etag { font-family:var(--mono); font-size:8px; letter-spacing:.04em; padding:2px 7px; border:1px solid var(--bord); color:var(--ink3); background:var(--surf); }
+
+/* ── PROJECTS ─────────────────────────────────────────── */
+#projects { background:var(--surf); }
+.projects-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:28px; }
+.proj-note { font-family:var(--mono); font-size:10px; color:var(--ink3); letter-spacing:.05em; }
+
+.pcard {
+  background:var(--surf); border:1px solid var(--bord);
+  margin-bottom:16px; display:grid; grid-template-columns:1fr 148px;
+  transition:box-shadow .2s, border-color .2s;
+  text-decoration:none; color:inherit;
+  position:relative; overflow:hidden;
+}
+.pcard::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--acc); }
+.pcard:hover { box-shadow:0 6px 24px rgba(0,0,0,.08); border-color:var(--acc); }
+.pcard.dim { opacity:.5; pointer-events:none; }
+.pcard.dim::before { background:var(--bord); }
+
+.pcard-body { padding:22px 24px; }
+.pcard-num { font-family:var(--mono); font-size:9px; letter-spacing:.10em; text-transform:uppercase; color:var(--acc2); margin-bottom:4px; }
+.pcard-title { font-family:var(--serif); font-size:21px; color:var(--ink); line-height:1.2; margin-bottom:8px; }
+.pcard-desc { font-size:13px; color:var(--ink2); line-height:1.65; max-width:500px; margin-bottom:14px; }
+.pcard-kpis { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:13px; }
+.pill { font-family:var(--mono); font-size:8.5px; letter-spacing:.04em; padding:3px 8px; border:1px solid var(--bord); color:var(--ink2); background:var(--surf2); }
+.pill.a { border-color:#BFCFFA; color:var(--acc2); background:var(--acc-bg); }
+.pill.g { border-color:#86EFAC; color:var(--grn); background:var(--grn-bg); }
+.pill.m { border-color:#FCD34D; color:var(--amb); background:var(--amb-bg); }
+.pcard-tools { display:flex; gap:4px; flex-wrap:wrap; }
+.tool { font-family:var(--mono); font-size:7.5px; letter-spacing:.04em; background:var(--ink); color:#fff; padding:2px 5px; }
+
+.pcard-side { padding:22px 20px 22px 0; display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; }
+.pcard-links { display:flex; flex-direction:column; gap:6px; align-items:flex-end; }
+.plink { font-family:var(--mono); font-size:9px; letter-spacing:.05em; text-transform:uppercase; text-decoration:none; padding:5px 10px; transition:all .18s; display:flex; align-items:center; gap:5px; }
+.plink.p { background:var(--acc); color:#fff; }
+.plink.p:hover { background:var(--acc2); }
+.plink.s { border:1px solid var(--bord); color:var(--ink2); }
+.plink.s:hover { border-color:var(--ink); color:var(--ink); }
+.pcard-status { font-family:var(--mono); font-size:7.5px; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; }
+.status-done { color:var(--grn); border:1px solid #86EFAC; background:var(--grn-bg); }
+.status-wip  { color:var(--ink3); border:1px solid var(--bord); }
+
+/* Placeholder card */
+.pcard-cs { padding:22px 24px; grid-column:1/-1; display:flex; align-items:center; gap:18px; }
+.cs-n { font-family:var(--mono); font-size:11px; letter-spacing:.10em; color:var(--ink3); }
+.cs-t { font-size:13px; color:var(--ink3); }
+.cs-t strong { font-size:14.5px; color:var(--ink2); font-weight:400; display:block; margin-bottom:2px; }
+
+/* ── CERTS ────────────────────────────────────────────── */
+#certs { background:var(--bg); }
+.edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+.edu-card { background:var(--surf); border:1px solid var(--bord); border-left:2px solid var(--acc); padding:14px 16px; }
+.edu-card.grn { border-left-color:var(--grn); }
+.edu-deg { font-family:var(--mono); font-size:8.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--acc2); margin-bottom:6px; }
+.edu-card.grn .edu-deg { color:var(--grn); }
+.edu-detail { font-size:13px; color:var(--ink2); line-height:1.7; }
+.edu-detail strong { color:var(--ink); font-weight:500; }
+.certs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+.cert { background:var(--surf); border:1px solid var(--bord); padding:12px 14px; }
+.cert-name { font-size:12.5px; color:var(--ink); font-weight:500; margin-bottom:3px; line-height:1.4; }
+.cert-org { font-family:var(--mono); font-size:8.5px; letter-spacing:.04em; color:var(--ink3); }
+
+/* ── CONTACT ──────────────────────────────────────────── */
+#contact { background:var(--hero); padding:64px 0; }
+.contact-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:52px; align-items:center; }
+.c-label { font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#7BAFD4; margin-bottom:6px; }
+.c-title { font-family:var(--serif); font-size:30px; color:#fff; margin-bottom:12px; }
+.c-text { font-size:14px; color:var(--hero-t2); line-height:1.75; margin-bottom:20px; }
+.c-detail { display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:10.5px; color:var(--hero-t2); margin-bottom:8px; text-decoration:none; transition:color .18s; }
+.c-detail:hover { color:#fff; }
+.c-icon { width:28px; height:28px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.09); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; }
+.c-actions { display:flex; flex-direction:column; gap:8px; align-items:flex-start; }
+.ca { font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; padding:9px 18px; transition:all .18s; display:inline-flex; align-items:center; gap:7px; }
+.ca-solid { background:var(--acc); color:#fff; }
+.ca-solid:hover { background:var(--acc2); }
+.ca-out { border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.65); }
+.ca-out:hover { border-color:rgba(255,255,255,.4); color:#fff; }
+
+/* ── FOOTER ───────────────────────────────────────────── */
+footer { background:#0E1520; padding:18px 48px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,.05); }
+.foot-l { font-family:var(--mono); font-size:9px; color:rgba(255,255,255,.2); }
+.foot-r { font-family:var(--mono); font-size:9px; color:rgba(255,255,255,.22); text-decoration:none; transition:color .18s; }
+.foot-r:hover { color:rgba(255,255,255,.6); }
+
+/* Fade-in */
+.fade-up { opacity:0; transform:translateY(14px); transition:opacity .48s ease, transform .48s ease; }
+.fade-up.visible { opacity:1; transform:none; }
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media(max-width:820px){
+  nav{padding:0 24px;} .nav-links{display:none;}
+  .container{padding:0 24px;}
+  .hero-grid{grid-template-columns:1fr;} .headshot-col{display:none;}
+  .about-grid{grid-template-columns:1fr; gap:28px;}
+  .exp-item{grid-template-columns:1fr; gap:4px;}
+  .exp-period{padding-top:0;}
+  .pcard{grid-template-columns:1fr;}
+  .pcard-side{flex-direction:row; padding:0 18px 18px; align-items:center;}
+  .certs-grid{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  footer{padding:16px 24px; flex-direction:column; gap:6px; align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<nav>
+  <a class="nav-name" href="#hero">Felix Okumo</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-cta" href="https://github.com/felixokumo1-stack" target="_blank">↗ GitHub</a>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section id="hero">
+<div class="container">
+  <div class="hero-grid">
+
+    <!-- Text -->
+    <div>
+      <div class="hero-eyebrow">Engineering Portfolio</div>
+      <h1 class="hero-name">Felix Okumo<br><em>Energy Systems<br>Engineer</em></h1>
+      <div class="hero-role">MSc · Sustainable Energy Systems · Ruhr University Bochum</div>
+      <p class="hero-tagline">
+        Building <strong>data-driven tools for the energy transition</strong> —
+        from off-grid microgrid design in West Africa to commercial PV investment
+        analysis in Germany. Every project starts with a real question
+        and ends with a number you can defend.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="#projects">↓ View Projects</a>
+        <a class="btn btn-ghost" href="mailto:felix.1.okumo@gmail.com">✉ Get in Touch</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/felix-okumo" target="_blank">↗ LinkedIn</a>
+      </div>
+      <div class="focus-tags">
+        <span class="ftag">Hybrid Microgrids</span>
+        <span class="ftag">PV Investment Analysis</span>
+        <span class="ftag">Techno-Economic Modelling</span>
+        <span class="ftag">Industrial Decarbonisation</span>
+        <span class="ftag">Energy Access · West Africa</span>
+      </div>
+    </div>
+
+    <!-- Headshot -->
+    <div class="headshot-col">
+      <div class="hs-ring">
+        <!--
+          ADD YOUR PHOTO:
+          1. Create folder:  assets/
+          2. Save photo as:  assets/headshot.jpg
+          3. Delete the hs-placeholder div below
+          4. Uncomment the next line:
+        -->
+        <img src="assets/headshot.jpg" alt="Felix Okumo">
+        
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="20" r="9" stroke="white" stroke-width="1.5"/>
+            <path d="M6 46c0-11 9-20 20-20s20 9 20 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Add assets/<br>headshot.jpg</span>
+        </div>
+      </div>
+      <div class="hs-location">Bochum, Germany<br>From Tarkwa, Ghana</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ABOUT ─────────────────────────────────────────────── -->
+<section id="about">
+<div class="container fade-up">
+  <div class="about-grid">
+
+    <div>
+      <div class="sec-label">About</div>
+      <h2 class="sec-title">From mine sites in Ghana<br>to energy systems in Germany</h2>
+      <p class="body-text">
+        I am a mechanical engineer from Tarkwa, Ghana, completing an MSc in Sustainable
+        Energy Systems and Circular Process Engineering at Ruhr University Bochum. Before
+        Bochum, I spent four years in industry — maintaining LPG infrastructure at Quantum
+        Logistics and deploying Caterpillar telematics systems at Gold Fields Tarkwa Mine,
+        one of West Africa's largest open-pit gold operations.
+      </p>
+      <p class="body-text">
+        That background gives me something most energy modellers lack: I have worked in
+        environments where <strong>equipment failure costs tens of thousands of dollars per
+        hour</strong> — where data systems either work reliably or they do not. I carry that
+        instinct for operational accountability into every model I build.
+      </p>
+      <p class="body-text">
+        The move into sustainable energy was deliberate. I apply the same rigour —
+        <strong>real data, clear constraints, quantifiable outcomes</strong> — to the problems
+        that define the next thirty years: scaling renewables in fragile-infrastructure markets,
+        decarbonising industrial processes, and making the circular economy work at system level.
+        Every project here is a complete engineering analysis, version-controlled and openly
+        published on GitHub.
+      </p>
+    </div>
+
+    <div>
+      <div class="skills-grid">
+        <div class="sk-card">
+          <div class="sk-cat">Simulation</div>
+          <div class="sk-list">HOMER Pro · pvlib<br>PVGIS / ERA5<br>NREL SAM<br>windpowerlib</div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-cat">Data &amp; Analytics</div>
+          <div class="sk-list">Python · pandas<br>numpy · matplotlib<br>Power BI · Excel<br>Time-series analysis</div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-cat">Financial</div>
+          <div class="sk-list">LCOE · NPV · IRR<br>DCF modelling<br>Sensitivity analysis<br>EEG 2023</div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-cat">Telematics</div>
+          <div class="sk-list">CAT ET · VisionLink<br>VIMSpc · SIS 2.0<br>Predictive maintenance<br>KPI frameworks</div>
+        </div>
+        <div class="sk-card full">
+          <div class="sk-cat">Engineering Tools &amp; Standards</div>
+          <div class="sk-inline">
+            <span>SolidWorks</span><span>AutoCAD</span><span>Git / GitHub</span>
+            <span>Jupyter</span><span>VS Code</span><span>IEC 62257</span>
+            <span>IEC 61400-1</span><span>IEA MTF</span><span>IRENA</span><span>ESMAP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EXPERIENCE ─────────────────────────────────────────── -->
+<section id="experience">
+<div class="container fade-up">
+  <div class="sec-label">Experience</div>
+  <h2 class="sec-title">Professional Background</h2>
+
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-period">Mar 2023<br>Jun 2025</div>
+      <div>
+        <div class="exp-role">Field Service Engineer — Product Link &amp; Telematics</div>
+        <div class="exp-co">Mantrac Ghana Ltd (Caterpillar) · Gold Fields Tarkwa Mine</div>
+        <p class="exp-desc">Led installation and cross-platform integration of Caterpillar Product Link telematics across large mining fleets at one of West Africa's largest gold mines. Built Power BI dashboards tracking equipment availability, fuel efficiency, utilisation, and fault trends. Performed data-driven failure pattern analysis supporting maintenance decisions at industrial scale.</p>
+        <div class="exp-tags">
+          <span class="etag">CAT ET</span><span class="etag">VisionLink</span>
+          <span class="etag">Power BI</span><span class="etag">Fleet telematics</span>
+          <span class="etag">Failure analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Jul 2021<br>Mar 2023</div>
+      <div>
+        <div class="exp-role">Maintenance Officer</div>
+        <div class="exp-co">Quantum LPG Logistics Limited · Tema, Ghana</div>
+        <p class="exp-desc">Managed predictive maintenance and condition monitoring for LPG pipelines, pumps, and pressure vessels. Designed KPI-based maintenance performance frameworks, reducing operational costs by ~15% through data-driven scheduling. Maintained full documentation in Alfresco DMS.</p>
+        <div class="exp-tags">
+          <span class="etag">Condition monitoring</span><span class="etag">Pressure vessels</span>
+          <span class="etag">KPI frameworks</span><span class="etag">~15% OpEx reduction</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Mar 2023<br>Jul 2023</div>
+      <div>
+        <div class="exp-role">Data Analyst (Volunteer)</div>
+        <div class="exp-co">Student Energy · Team OCO (Virtual)</div>
+        <p class="exp-desc">Analysed industrial companies across hard-to-abate sectors to identify decarbonisation opportunities. Developed KPI reports supporting stakeholder engagement in voluntary carbon markets.</p>
+        <div class="exp-tags">
+          <span class="etag">Decarbonisation</span><span class="etag">Carbon markets</span>
+          <span class="etag">Industrial analysis</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PROJECTS ───────────────────────────────────────────── -->
+<section id="projects">
+<div class="container fade-up">
+
+  <div class="projects-top">
+    <div>
+      <div class="sec-label">Work</div>
+      <h2 class="sec-title" style="margin-bottom:0;">Engineering Projects</h2>
+    </div>
+    <div class="proj-note">Building across multiple domains</div>
+  </div>
+
+  <!-- PROJECT 01 — PV Dashboard -->
+  <a class="pcard" href="https://felix-pv-investment-dashboard.netlify.app/" target="_blank">
+    <div class="pcard-body">
+      <div class="pcard-num">Project 01 // Renewable Energy · Germany</div>
+      <div class="pcard-title">Commercial PV Investment Analysis<br>500 kWp Rooftop · Bochum</div>
+      <p class="pcard-desc">Techno-economic feasibility study for a 500 kWp commercial rooftop PV system in Bochum. Hourly yield simulation using pvlib and DWD climate data, DCF financial modelling under EEG 2023, three investment scenarios, and an interactive investor dashboard.</p>
+      <div class="pcard-kpis">
+        <span class="pill a">IRR 8.2%</span>
+        <span class="pill g">LCOE €0.058/kWh</span>
+        <span class="pill a">NPV €284k</span>
+        <span class="pill">11.4yr Payback</span>
+        <span class="pill m">EEG 2023</span>
+      </div>
+      <div class="pcard-tools">
+        <span class="tool">Python</span><span class="tool">pvlib</span>
+        <span class="tool">DWD data</span><span class="tool">EEG 2023</span>
+        <span class="tool">Chart.js</span><span class="tool">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="pcard-side">
+      <div class="pcard-links">
+        <span class="plink p">↗ Live dashboard</span>
+        <a class="plink s" href="https://github.com/felixokumo1-stack" target="_blank" onclick="event.stopPropagation()">⌥ GitHub</a>
+      </div>
+      <div class="pcard-status status-done">Complete</div>
+    </div>
+  </a>
+
+  <!-- PROJECT 02 — Microgrid Ghana -->
+  <a class="pcard" href="https://microgrid-adafoah.netlify.app/" target="_blank">
+    <div class="pcard-body">
+      <div class="pcard-num">Project 02 // Renewable Energy · Ghana</div>
+      <div class="pcard-title">Off-Grid Hybrid Microgrid Design<br>Ada East, Ghana</div>
+      <p class="pcard-desc">Full feasibility study for a PV-wind-battery-diesel hybrid system serving 500 households on a Volta estuary island. Seven-phase workflow: IEA MTF load profiling, PVGIS/ERA5 resource assessment, HOMER Pro optimisation across 1,730 simulations, Python dispatch verification, and complete techno-economic analysis.</p>
+      <div class="pcard-kpis">
+        <span class="pill a">LCOE €0.227/kWh</span>
+        <span class="pill g">97.6% Renewable</span>
+        <span class="pill a">€423k CAPEX</span>
+        <span class="pill">4.7yr Payback</span>
+        <span class="pill g">0.00% LPSP</span>
+      </div>
+      <div class="pcard-tools">
+        <span class="tool">HOMER Pro</span><span class="tool">Python</span>
+        <span class="tool">PVGIS ERA5</span><span class="tool">windpowerlib</span>
+        <span class="tool">IEC 62257</span><span class="tool">pandas</span>
+      </div>
+    </div>
+    <div class="pcard-side">
+      <div class="pcard-links">
+        <span class="plink p">↗ View project</span>
+        <a class="plink s" href="https://github.com/felixokumo1-stack/microgrid-adafoah-ghana.git" target="_blank" onclick="event.stopPropagation()">⌥ GitHub</a>
+      </div>
+      <div class="pcard-status status-done">Complete</div>
+    </div>
+  </a>
+
+  <!-- PLACEHOLDER 03 -->
+  <div class="pcard dim">
+    <div class="pcard-cs">
+      <div class="cs-n">03</div>
+      <div class="cs-t"><strong>Next Project</strong>In progress — details coming soon</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EDUCATION & CERTS ───────────────────────────────────── -->
+<section id="certs">
+<div class="container fade-up">
+  <div class="sec-label">Credentials</div>
+  <h2 class="sec-title">Education &amp; Certifications</h2>
+
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-deg">MSc Mechanical Engineering</div>
+      <div class="edu-detail">
+        Sustainable Energy Systems &amp; Circular Process Engineering<br>
+        <strong>Ruhr University Bochum</strong> · Oct 2025 – Present
+      </div>
+    </div>
+    <div class="edu-card grn">
+      <div class="edu-deg">BSc Mechanical Engineering</div>
+      <div class="edu-detail">
+        University of Mines and Technology (UMaT)<br>
+        <strong>Tarkwa, Ghana</strong> · Sep 2016 – Aug 2020
+      </div>
+    </div>
+  </div>
+
+  <div class="certs-grid">
+    <div class="cert"><div class="cert-name">Principles of PV Systems</div><div class="cert-org">GREEN Solar Academy · 2024</div></div>
+    <div class="cert"><div class="cert-name">Energy Efficiency Fundamentals</div><div class="cert-org">Schneider Electric University · 2024</div></div>
+    <div class="cert"><div class="cert-name">Energy Utilization and Storage</div><div class="cert-org">RES4CITY Project · 2025</div></div>
+    <div class="cert"><div class="cert-name">Introduction to Project Management</div><div class="cert-org">IBM / Coursera · 2023</div></div>
+    <div class="cert"><div class="cert-name">Enterprise Design Thinking Practitioner</div><div class="cert-org">IBM · 2023</div></div>
+    <div class="cert"><div class="cert-name">Energy Systems &amp; Policy</div><div class="cert-org">Student Energy Career Training · 2023</div></div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CONTACT ────────────────────────────────────────────── -->
+<section id="contact">
+<div class="container fade-up">
+  <div class="contact-grid">
+    <div>
+      <div class="c-label">Get in touch</div>
+      <h2 class="c-title">Let's connect</h2>
+      <p class="c-text">Open to conversations about energy systems research, collaboration on engineering projects, or graduate and internship opportunities in sustainable energy or industrial decarbonisation.</p>
+      <a class="c-detail" href="mailto:felix.1.okumo@gmail.com"><span class="c-icon">✉</span>felix.1.okumo@gmail.com</a>
+      <a class="c-detail" href="tel:+4915757199705"><span class="c-icon">📞</span>+49 157 5719 9705</a>
+      <a class="c-detail" href="https://linkedin.com/in/felix-okumo" target="_blank"><span class="c-icon">in</span>linkedin.com/in/felix-okumo</a>
+      <a class="c-detail" href="https://github.com/felixokumo1-stack" target="_blank"><span class="c-icon">⌥</span>github.com/felixokumo1-stack</a>
+    </div>
+    <div class="c-actions">
+      <a class="ca ca-solid" href="mailto:felix.1.okumo@gmail.com">✉ Send an email</a>
+      <a class="ca ca-out" href="https://linkedin.com/in/felix-okumo" target="_blank">↗ LinkedIn profile</a>
+      <a class="ca ca-out" href="https://github.com/felixokumo1-stack" target="_blank">⌥ GitHub repositories</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="foot-l">© 2026 Felix Okumo · MSc Mechanical Engineering · Ruhr University Bochum · Bochum, Germany</div>
+  <a class="foot-r" href="#hero">↑ Top</a>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
